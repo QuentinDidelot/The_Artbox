@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="css/style.css">
     <title>The ArtBox</title>
 </head>
-
 <body>
-    <header>
-            <a href="index.php"><img src="img/logo.png" alt="Logo Artbox" id="logo"></a>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                </ul>
-            </nav>
-    </header>
-    <main>
+<header>
+    <a href="index.php"><img src="img/logo.png" alt="Logo Artbox" id="logo"></a>
+    <nav>
+        <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="ajouter.php">Ajouter une œuvre</a></li>
+        </ul>
+    </nav>
+</header>
+<main>

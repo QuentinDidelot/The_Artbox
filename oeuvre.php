@@ -1,30 +1,40 @@
-<?php 
-include('header.php');
-include('oeuvres.php');
-$id = $_GET['id'];  # On obtient l'id de l'oeuvre et on la transfère dans la variable $id
-$o = null; # On déclare une variable $o qui sera nulle pour le moment
+<?php
+    require 'header.php';
+    require 'oeuvres.php';
 
-foreach($oeuvres as $oeuvre) {  # Pour chaque oeuvre se trouvant dans le fichier "oeuvreS.php" 
-    if($id == $oeuvre['id']){   # Si l'id de l'URL est égale à l'id de l'oeuvre
-        $o = $oeuvre;           # alors l'oeuvre à afficher est stockée dans la varible $o
-        break;
+    // Si l'URL ne contient pas d'id, on redirige sur la page d'accueil
+    if(empty($_GET['id'])) {
+        header('Location: index.php');
     }
-}
+
+    $oeuvre = null;
+
+    // On parcourt les oeuvres du tableau afin de rechercher celle qui a l'id précisé dans l'URL
+    foreach($oeuvres as $o) {
+        // intval permet de transformer l'id de l'URL en un nombre (exemple : "2" devient 2)
+        if($o['id'] === intval($_GET['id'])) {
+            $oeuvre = $o;
+            break; // On stoppe le foreach si on a trouvé l'oeuvre
+        }
+    }
+
+    // Si aucune oeuvre trouvé, on redirige vers la page d'accueil
+    if(is_null($oeuvre)) {
+        header('Location: index.php');
+    }
 ?>
 
-    <article id="detail-oeuvre">
-        <div id="img-oeuvre">
-            <img src="<?php echo $o['image']?>" alt="<?php echo $o['titre'] ?>">
-        </div>
-        <div id="contenu-oeuvre">
-            <h1><?php echo $o['titre']?></h1>
-            <p class="description"><?php echo $o['artiste'] ?></p>
-            <p class="description-complete">
-                <?php echo $o['description'] ?>
-            </p>
-        </div>
-    </article>
+<article id="detail-oeuvre">
+    <div id="img-oeuvre">
+        <img src="<?= $oeuvre['image'] ?>" alt="<?= $oeuvre['titre'] ?>">
+    </div>
+    <div id="contenu-oeuvre">
+        <h1><?= $oeuvre['titre'] ?></h1>
+        <p class="description"><?= $oeuvre['artiste'] ?></p>
+        <p class="description-complete">
+             <?= $oeuvre['description'] ?>
+        </p>
+    </div>
+</article>
 
-<?php 
-include('footer.php');
-?>
+<?php require 'footer.php'; ?>
