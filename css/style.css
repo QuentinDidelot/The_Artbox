@@ -15,6 +15,13 @@ a {
     color: inherit;
 }
 
+main {
+    max-width: 1080px;
+    margin: auto;
+}
+
+/*************** Header ******************/
+
 header {
     display: flex;
     justify-content: space-between;
@@ -35,17 +42,8 @@ header ul {
     gap: 20px;
 }
 
-main {
-    max-width: 1080px;
-    margin: auto;
-}
 
-footer {
-    text-align: center;
-    font-size: 12px;
-}
-
-
+/*************** Oeuvres ******************/
 
 #liste-oeuvres {
     display: flex;
@@ -100,6 +98,8 @@ footer {
     max-width: 470px;
 }
 
+/*************** Formulaire "Ajouter une oeuvre" ******************/
+
 form {
     max-width: 500px;
     margin: auto;
@@ -133,6 +133,15 @@ input[type="submit"] {
     padding: 7px;
 }
 
+
+/*************** Footer ******************/
+
+footer {
+    text-align: center;
+    font-size: 12px;
+}
+
+/*************** Media queries ******************/
 
 @media (max-width: 850px) {
     .oeuvre {
